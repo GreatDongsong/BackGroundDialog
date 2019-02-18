@@ -1,7 +1,10 @@
 package dawson.com.backgrounddialog;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.job.JobParameters;
 import android.app.job.JobService;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Handler;
@@ -11,6 +14,7 @@ import android.os.RemoteException;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
+import android.view.WindowManager;
 
 import static dawson.com.backgrounddialog.BackGroundTaskManager.MESSENGER_INTENT_KEY;
 import static dawson.com.backgrounddialog.BackGroundTaskManager.WORK_DURATION_KEY;
@@ -67,6 +71,19 @@ public class MyJobService extends JobService {
         Log.i(TAG, "on start job: " + params.getJobId());
 
         // Return true as there's more work to be done with this job.
+        AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+        builder.setMessage("Hello,My name is Message.");
+        builder.setNegativeButton("CANCEL", null);
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // 具体操作
+            }
+        });
+        final Dialog dialog = builder.create();
+        dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_SYSTEM_ALERT);
+        dialog.show();
+
         return true;
     }
 
