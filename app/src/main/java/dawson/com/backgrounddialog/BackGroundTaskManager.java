@@ -11,12 +11,9 @@ import android.os.Messenger;
 import android.os.PersistableBundle;
 import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.Toast;
 
 import java.util.List;
-
-import static android.content.ContentValues.TAG;
 
 public class BackGroundTaskManager {
     private int mJobId;
@@ -86,7 +83,7 @@ public class BackGroundTaskManager {
         builder.setExtras(extras);
 
         // Schedule job
-        Log.d(TAG, "Scheduling job");
+        Toast.makeText(context, "Scheduling job", Toast.LENGTH_SHORT).show();
         builder.setMinimumLatency(minLatencyMillis);
         builder.setOverrideDeadline(maxExecutionDelayMillis);
         if (requiresUnmetered) {

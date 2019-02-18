@@ -12,13 +12,13 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.util.Log;
 
+import static dawson.com.backgrounddialog.BackGroundTaskManager.MESSENGER_INTENT_KEY;
 import static dawson.com.backgrounddialog.BackGroundTaskManager.WORK_DURATION_KEY;
 
 @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
 public class MyJobService extends JobService {
 
     private static final String TAG = MyJobService.class.getSimpleName();
-    private static final String MESSENGER_INTENT_KEY = "MESSENGER_INTENT_KEY";
     private static final int MSG_COLOR_STOP = 0;
     private static final int MSG_COLOR_START = 1;
 
